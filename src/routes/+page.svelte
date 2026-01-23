@@ -23,6 +23,33 @@
             description: 'A life simulation game.',
             path: '/games/bitlife/index.html'
         }
+          ,{
+            id: 'retrobowl',
+            name: 'Retro Bowl',
+            description: 'A retro-style football game.',
+            path: '/games/retro-bowl-main/  index.html'
+        }
+        ,{
+            id: 'run3',
+            name: 'Run 3',
+            description: 'A fun running game.',
+            path: '/games/Run3/index.html'
+        } 
+        ,{
+            id: 'Slope',
+            name: 'Slope',
+            description: 'Dodge all the obstacles.',
+            path: '/games/Slope/index.html'
+        }
+        ,{
+            id: 'emulator',
+            name: 'Emulator',
+            description: 'Play your ROMs here .',
+            path: '/games/Emulator/index.html'
+        }
+
+
+       
     ];
 
     function play(game: Game) {
@@ -50,15 +77,15 @@
 <main>
     {#if !selectedGame}
         <div class="hero">
-            <h1>GAMING</h1>
-            <p>Select a game to start playing</p>
+            <h1>Math Practice</h1>
+            <p>Select a game to start learning</p>
         </div>
 
         <div class="grid">
             {#each games as game}
                 <button class="card" on:click={() => play(game)}>
                     <div class="card-content">
-                        <h2><span class="icon">{#if game.id === 'bitlife'}👤{:else}🏎️{/if}</span>{game.name}</h2>
+                        <h2><span class="icon">{game.id === 'bitlife' ? '👤' : game.id === 'retrobowl' ? '🏈' : game.id === 'run3' ? '🏃' : game.id === 'ducklife4' ? '🦆' : game.id === 'Slope' ? '🟢' : game.id.includes('emulator') ? '🎮' : '🏎️'}</span>{game.name}</h2>
                         <p>{game.description}</p>
                     </div>
                 </button>
@@ -101,32 +128,32 @@
     .hero { text-align: center; padding: 50px 20px; }
     h1 { font-size: 3rem; letter-spacing: 5px; color: #00ff88; margin: 0; }
 
-    .grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        padding: 20px;
-        max-width: 1000px;
-        margin: 0 auto;
-    }
+  .grid {
+    display: grid;
+    /* This creates 2 equal columns */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
-    .card {
-        background: #111;
-        border: 2px solid #222;
-        padding: 14px 18px;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: 0.2s;
-        color: white;
-        width: min(900px, 90%);
-        height: 140px; /* slightly bigger */
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        box-sizing: border-box;
-        text-align: center;
-    }
+.card {
+    background: #111;
+    border: 2px solid #222;
+    padding: 14px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: white;
+    /* Remove the fixed width so it fills the grid cell */
+    width: 100%; 
+    height: 140px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-sizing: border-box;
+}
 
     .card-content { display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; }
     .card h2 { margin: 0 0 6px 0; font-size: 1.25rem; display:flex; align-items:center; gap:10px; }
