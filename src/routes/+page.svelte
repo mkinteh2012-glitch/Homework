@@ -79,7 +79,7 @@
         <div class="hero">
             <h1>Math Practice</h1>
             <p>Select a game to start learning</p>
-            <p>Muhammad made it</p>
+            
         </div>
 
         <div class="grid">
